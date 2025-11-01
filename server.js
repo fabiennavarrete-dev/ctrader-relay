@@ -21,7 +21,7 @@ app.all("*", async (req, res) => {
     const response = await fetch(target, {
       method: req.method,
       headers: req.headers,
-      body: req.method === "GET" ? undefined : JSON.stringify(req.body),
+body: ["GET", "HEAD"].includes(req.method) ? undefined : JSON.stringify(req.body),
       agent,
     });
 
